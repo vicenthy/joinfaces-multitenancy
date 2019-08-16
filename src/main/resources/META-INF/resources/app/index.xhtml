@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	</h:head>
+	<h:body>
+	<h:form>
+	
+		<p:panel header="Cadastro de cliente">
+			<p:outputLabel value="Nome"/>
+			<p:inputText value="#{clienteBean.nome}" />
+			<p:outputLabel value="Data de nascimento"/>
+			<p:calendar value="#{clienteBean.dataNascimento}" />
+			<p:commandButton value="Salvar" action="#{clienteBean.salvar}" update="@form"/>
+			<p:link href="/sair" value="sair"/>
+		</p:panel>
+	
+		<p:dataTable value="#{clienteBean.clientes}" var="c">
+		<f:facet name="header">
+				Clientes
+		</f:facet>
+			<p:column headerText="Id">
+				<p:outputLabel value="#{c.id}"/>
+			</p:column>
+
+			<p:column headerText="Nome">
+						<p:outputLabel value="#{c.nome}"/>
+			</p:column>
+			<p:column headerText="Data nascimento">
+				<p:outputLabel value="#{c.nascimento}" />
+			</p:column>
+			<f:facet name="footer">
+				Tenant: 
+			</f:facet>
+		</p:dataTable>
+		</h:form>
+	</h:body>
+</html>
